@@ -11,7 +11,25 @@ gpg -d mydata.tar.gpg
 # Send new key to key server
 # gpg --keyserver subkeys.pgp.net --send-key 6AA15948
 
+----------- GPG key server installation ---------------
+Install the sks package
+>sudo apt-get install sks
 
+Build the key database
+>sudo sks build
+
+Set database permissions
+>sudo chown -Rc debian-sks:debian-sks /var/lib/sks/DB
+
+Set the server to start automatically at boot
+set initstart=yes in /etc/default/sks
+
+Start the service
+>sudo /etc/init.d/sks start
+
+
+
+------------- Full --------
 to create a key:
 gpg --gen-key
 generally you can select the defaults.
