@@ -8,6 +8,9 @@ gpg -e -u "Sender User Name" -r "Receiver User Name" somefile
 # decrypt
 gpg -d mydata.tar.gpg
 
+# Send new key to key server
+# gpg --keyserver subkeys.pgp.net --send-key 6AA15948
+
 
 to create a key:
 gpg --gen-key
