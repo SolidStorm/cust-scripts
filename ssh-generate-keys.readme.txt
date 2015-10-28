@@ -1,0 +1,24 @@
+https://help.ubuntu.com/community/SSH/OpenSSH/Keys
+https://help.github.com/articles/generating-ssh-keys/
+
+ssh-keygen -t rsa -b 4096
+
+# copy public key to external ssh server
+ssh-copy-id <username>@<host>
+
+
+Then edit your /etc/ssh/sshd_config and add:
+
+AuthorizedKeysFile    /etc/ssh/%u/authorized_keys
+Finally, restart ssh with:
+
+# restart service
+sudo service ssh restart
+
+here are a few things which could prevent this from working as easily as demonstrated above. On default Ubuntu installs however, the above examples should work. If not, then check the following condition, as it is the most frequent cause:
+
+On the host computer, ensure that the /etc/ssh/sshd_config contains the following lines, and that they are uncommented;
+
+
+PubkeyAuthentication yes
+RSAAuthentication yes
